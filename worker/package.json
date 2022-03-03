@@ -1,0 +1,20 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx kill-port 80 && nodemon src/server.js",
+    "main": "src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ioredis": "^4.28.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

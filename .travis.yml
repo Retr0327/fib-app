@@ -1,0 +1,35 @@
+sudo: required
+language: generic
+
+notifications:
+  email: false
+
+services:
+  - docker
+
+before_install:
+  - docker build -t retr0327/fib-app-frontend  -f ./fib-app-frontend/Dockerfile.dev ./fib-app-frontend
+
+script:
+  - docker run -e CI=true retr0327/fib-app-frontend npm run test
+
+after_success:
+  - docker build -t retr0327/fib-app-frontend ./fib-app-frontend
+  - docker build -t retr0327/fib-app-backend ./fib-app-backend
+  - docker build -t retr0327/worker ./worker
+
+
+
+# deploy:
+#   skip_cleanup: true
+#   script: docker images -q && docker rmi $$(docker images -q) && docker volume rm $$(docker volume ls -q)
+#   provider: elasticbeanstalk
+#   region: "us-east-2"
+#   app: "docker-react"
+#   env: "Dockerreact-env-1"
+#   bucket_name: "elasticbeanstalk-us-east-2-629500650056"
+#   bucket_path: "docker-react"
+#   on:
+#     branch: main
+#   access_key_id: $AWS_ACCESS_KEY
+  # secret_access_key: $AWS_SECRET_KEY 

@@ -1,16 +1,8 @@
-import redis from "redis";
+import Redis from "ioredis";
 import keys from "../constants/keys.js";
 
 let { redisHost, redisPort } = keys;
 
-const redisConfig = {
-  url: `redis://${redisHost}:${redisPort}`,
-  retry_strategy: () => 1000,
-  legacyMode: true,
-};
+const redis = new Redis(`redis://${redisHost}:${redisPort}`);
 
-const redisCli = redis.createClient(redisConfig);
-
-await redisCli.connect();
-
-export default redisCli;
+export default redis;

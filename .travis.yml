@@ -17,7 +17,7 @@ after_success:
   - docker build -t retr0327/fib-app-frontend ./fib-app-frontend
   - docker build -t retr0327/fib-app-backend ./fib-app-backend
   - docker build -t retr0327/worker ./worker
-  - docker build -t retr0327/deployment ./deployment
+  - docker build -t retr0327/deployment ./deployment 
   # sign in to docker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # push images to docker hub 

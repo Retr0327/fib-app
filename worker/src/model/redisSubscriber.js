@@ -1,7 +1,8 @@
-import redisCli from "./redisCli.js";
+import Redis from "ioredis";
+import keys from "../constants/keys.js";
 
-const redisSubscriber = redisCli.duplicate();
+let { redisHost, redisPort } = keys;
 
-await redisSubscriber.connect();
+const redisSubscriber = new Redis(`redis://${redisHost}:${redisPort}`);
 
 export default redisSubscriber;

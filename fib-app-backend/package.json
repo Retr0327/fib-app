@@ -13,8 +13,10 @@
   "dependencies": {
     "@koa/cors": "^3.3.0",
     "@koa/router": "^10.1.1",
+    "ioredis": "^5.0.4",
     "koa": "^2.13.4",
     "koa-body": "^5.0.0",
+    "pg": "^8.7.3",
     "supertest": "^6.2.3",
     "ts-jest": "^28.0.2"
   },

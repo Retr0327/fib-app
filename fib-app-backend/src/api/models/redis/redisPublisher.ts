@@ -1,4 +1,4 @@
-import redisCli from "./redisCli.js";
+import redisCli from "./redisCli";
 
 const redisPublisher = redisCli.duplicate();
 

@@ -14,7 +14,7 @@ const handleGetCurrentValue = async (ctx: Context) => {
   });
 
   ctx.body = 200;
-  ctx.body = { status: "success", data: result[0] };
+  ctx.body = { status: "success", data: result[result.length - 1] };
 };
 
 export default handleGetCurrentValue;

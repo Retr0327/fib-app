@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx kill-port 80 && nodemon -L --config nodemon.json",
-    "build": "rm -rf ./dist && npx tsc"
+    "start:dev": "npx kill-port 3002 && nodemon -L --config nodemon.json",
+    "build": "rm -rf ./dist && npx tsc",
+    "start": "npx kill-port 3002 && node ./dist/server.js"
   },
   "keywords": [],
   "author": "",

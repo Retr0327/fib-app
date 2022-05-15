@@ -2,16 +2,19 @@ import { Context } from "koa";
 import { redisCli } from "../models";
 
 const handleGetCurrentValue = async (ctx: Context) => {
-  redisCli.hgetall("values", (error, result) => {
-    if (error) {
-      ctx.status = 500;
-      ctx.body = { status: "failed" };
-      return;
-    }
+  const result: string[] = await new Promise((resolve, reject) => {
+    redisCli.hgetall("values", (error, result) => {
+      if (error) {
+        return reject(error);
+      }
 
-    ctx.body = 200;
-    ctx.body = { status: "success", data: result };
+      const value = Object.values(result!);
+      return resolve(value);
+    });
   });
+
+  ctx.body = 200;
+  ctx.body = { status: "success", data: result[0] };
 };
 
 export default handleGetCurrentValue;

@@ -7,7 +7,7 @@
     "test": "npx kill-port 3000 && node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --forceExit",
     "start:dev": "npx kill-port 3000 && nodemon -L --config nodemon.json",
     "build": "rm -rf ./dist && npx tsc",
-    "start": "npx kill-port 3000 && nodemon ./dist/server.js"
+    "start": "npx kill-port 3000 && node ./dist/server.js"
   },
   "keywords": [],
   "author": "",

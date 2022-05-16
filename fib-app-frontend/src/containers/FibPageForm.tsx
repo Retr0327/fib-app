@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import { createFibValues } from "src/services";
 import { Grid, Box, Button } from "@mui/material";
 import { Formik, Form, FormikHelpers } from "formik";
 import { FibPagePropsType, FormValueType } from "types";
@@ -19,7 +20,15 @@ function FibPageForm({ allValues, currentIndex }: FibPagePropsType) {
     actions: FormikHelpers<FormValueType>
   ) => {
     const { inputIndex } = values;
-    console.log(inputIndex);
+    const [result, error] = await createFibValues({ index: inputIndex });
+
+    if (result.status === "failed" && result.msg === "Index too high!") {
+      return actions.setErrors({ inputIndex: result.msg });
+    }
+
+    if (result.status === "success") {
+      return window.location.reload();
+    }
   };
 
   return (

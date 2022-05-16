@@ -26,3 +26,11 @@ export type FibPagePropsType = {
   allValues: { [keys: strnig]: any }[];
   currentIndex: string;
 };
+
+export type ControlledProps = {
+  label: string;
+  name: string;
+};
+
+export type ControllerProps = ControlledProps &
+  ({ control: "text-input" });

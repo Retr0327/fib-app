@@ -1,20 +1,32 @@
 import { Context } from "koa";
 import { redisCli } from "../models";
 
+type RedisResultType = {
+  index: string;
+  fib: string;
+}[];
+
 const handleGetCurrentValue = async (ctx: Context) => {
-  const result: string[] = await new Promise((resolve, reject) => {
+  const redisResult: RedisResultType = await new Promise((resolve, reject) => {
     redisCli.hgetall("values", (error, result) => {
       if (error) {
         return reject(error);
       }
+      const keys = Object.keys(result!);
 
-      const value = Object.values(result!);
-      return resolve(value);
+      const resultObj = keys.map((value) => {
+        return {
+          index: value,
+          fib: result![value],
+        };
+      });
+
+      return resolve(resultObj);
     });
   });
 
   ctx.body = 200;
-  ctx.body = { status: "success", data: result[result.length - 1] };
+  ctx.body = { status: "success", data: redisResult };
 };
 
 export default handleGetCurrentValue;

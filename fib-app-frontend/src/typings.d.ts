@@ -1,3 +1,7 @@
+export type FormValueType = {
+  inputIndex: string;
+};
+
 export type HTTPMethod =
   | "get"
   | "GET"

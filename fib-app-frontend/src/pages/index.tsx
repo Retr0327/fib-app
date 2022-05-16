@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
+import FibPage from "@containers/FibPage";
 
 const Home: NextPage = () => {
-  return <h1>Hello World</h1>;
+  return <FibPage />;
 };
 
 export default Home;
-    

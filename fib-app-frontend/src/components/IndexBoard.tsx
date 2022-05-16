@@ -1,7 +1,7 @@
-import { FibPagePropsType } from "types";
+import { AllValuesPropType } from "types";
 import { Typography, Box } from "@mui/material";
 
-function IndexBoard({ allValues }: Partial<FibPagePropsType>) {
+function IndexBoard({ allValues }: AllValuesPropType) {
   return (
     <Box
       sx={{

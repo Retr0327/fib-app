@@ -22,10 +22,15 @@ export type CustomFetchType = {
   credentials?: CredentialsType;
 };
 
-export type FibPagePropsType = {
+export type AllValuesPropType = {
   allValues: { fib_number: string }[];
+};
+
+export type CurrentIndexPropType = {
   currentIndex: { index: string; fib: string }[];
 };
+
+export type FibPagePropsType = AllValuesPropType & CurrentIndexPropType;
 
 export type ControlledProps = {
   label: string;

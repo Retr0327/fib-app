@@ -24,7 +24,7 @@ export type CustomFetchType = {
 
 export type FibPagePropsType = {
   allValues: { [keys: strnig]: any }[];
-  currentIndex: string;
+  currentIndex: { [keys: strnig]: any }[];
 };
 
 export type ControlledProps = {
@@ -32,5 +32,4 @@ export type ControlledProps = {
   name: string;
 };
 
-export type ControllerProps = ControlledProps &
-  ({ control: "text-input" });
+export type ControllerProps = ControlledProps & { control: "text-input" };

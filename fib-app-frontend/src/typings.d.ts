@@ -23,8 +23,8 @@ export type CustomFetchType = {
 };
 
 export type FibPagePropsType = {
-  allValues: { [keys: strnig]: any }[];
-  currentIndex: { [keys: strnig]: any }[];
+  allValues: { fib_number: string }[];
+  currentIndex: { index: string; fib: string }[];
 };
 
 export type ControlledProps = {

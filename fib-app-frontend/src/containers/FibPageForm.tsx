@@ -2,11 +2,8 @@ import * as Yup from "yup";
 import { Grid, Box, Button } from "@mui/material";
 import { Formik, Form, FormikHelpers } from "formik";
 import { FibPagePropsType, FormValueType } from "types";
+import { IndexBoard, FibValueBoard } from "@components/index";
 import FormikController from "@components/Form/FormikController";
-import { IndexBoard } from "@components/index";
-
-
-//  currentIndex [ { index: '4', fib: '3' }, { index: '6', fib: '8' } ]
 
 function FibPageForm({ allValues, currentIndex }: FibPagePropsType) {
   const initialValues: FormValueType = {
@@ -64,6 +61,10 @@ function FibPageForm({ allValues, currentIndex }: FibPagePropsType) {
 
               <Grid item xs={12} md={12}>
                 <IndexBoard allValues={allValues} />
+              </Grid>
+
+              <Grid item xs={12} md={12} mt={2}>
+                <FibValueBoard currentIndex={currentIndex} />
               </Grid>
             </Grid>
           </Form>

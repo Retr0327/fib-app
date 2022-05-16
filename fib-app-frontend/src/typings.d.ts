@@ -17,3 +17,8 @@ export type CustomFetchType = {
   url: string;
   credentials?: CredentialsType;
 };
+
+export type FibPagePropsType = {
+  allValues: { [keys: strnig]: number }[];
+  currentIndex: string;
+};

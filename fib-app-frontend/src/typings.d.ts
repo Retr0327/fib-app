@@ -19,6 +19,6 @@ export type CustomFetchType = {
 };
 
 export type FibPagePropsType = {
-  allValues: { [keys: strnig]: number }[];
+  allValues: { [keys: strnig]: any }[];
   currentIndex: string;
 };

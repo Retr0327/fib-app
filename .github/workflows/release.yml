@@ -5,14 +5,38 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
+  deploy-backend:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: "fib-app-backend"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: docker build . -t retr0327/fib-app-backend
       - run: echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin
       - run: docker push retr0327/fib-app-backend
+
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "fib-app-frontend"
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: docker build . -t retr0327/fib-app-frontend
+      - run: echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin
+      - run: docker push retr0327/fib-app-frontend 
+  
+  deploy-worker:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "worker"
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: docker build . -t retr0327/worker
+      - run: echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin
+      - run: docker push retr0327/worker
